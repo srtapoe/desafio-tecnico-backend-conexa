@@ -39,7 +39,7 @@ Também precisamos de uma rota para o médico conseguir realizar logoff:
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 }
 ```
-Obs: Após realizado o logoff, token precisa ser invalidado na aplicação para que não seja possível reutilizá-lo após novamente. 
+Obs: Após realizado o logoff, token precisa ser invalidado na aplicação para que não seja possível reutilizá-lo novamente. 
 
 
 Na API também precisamos de um CRUD de pacientes com as seguintes informações:
@@ -51,7 +51,7 @@ Na API também precisamos de um CRUD de pacientes com as seguintes informações
   "telefone": "(21) 3232-6565"
 }
 ```
-Obs: A rota de cadastro de pacientes não precisa ser verificada com o token JWT, pois o próprio paciente sem login na plataforma vai realizar o cadastro através de uma landing page pública na web.
+Obs: A rota de cadastro de pacientes não precisa ser verificada com o token JWT, pois o próprio paciente vai realizar o cadastro através de uma landing page pública na web.
 
 E por fim precisamos de uma rota onde o médico logado realiza agendamento de consulta para um paciente:
 ```
