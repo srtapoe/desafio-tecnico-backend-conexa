@@ -4,7 +4,7 @@ Descrição:
 
 Precisamos construir uma API REST onde nossos médicos de plantão consigam agendar atendimentos com pacientes.
 
-Precisamos de uma rota para que médicos da clínica Conexa Saúde conseguirem realizar login na aplicação:
+Precisamos de uma rota para que médicos da clínica Conexa Saúde consigam realizar login na aplicação:
 ```
 {
   "usuario": "medico@email.com",
