@@ -2,7 +2,7 @@
 
 Descrição:
 
-Precisamos construir uma API REST onde nossos médicos de plantão consigam realizar cadastro de pacientes e agendar um atendimento.
+Precisamos construir uma API REST onde nossos médicos de plantão consigam agendar atendimentos com pacientes.
 
 Precisamos de uma rota para que médicos da clínica Conexa Saúde conseguirem realizar login na aplicação:
 ```
