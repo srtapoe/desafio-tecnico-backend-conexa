@@ -77,6 +77,8 @@ Serão avaliados os seguintes itens:
 
 Em caso de dúvidas sobre o desafio, entre em contato.
 
+Lembre-se que uma boa aplicação é bem testada
+
 
 
 
