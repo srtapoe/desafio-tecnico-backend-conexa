@@ -73,6 +73,7 @@ Serão avaliados os seguintes itens:
 * Clareza do código;
 * Escolha das tecnologias;
 * Se os requisitos descritos acima foram atendidos;
+* Se possui descrição clara de como montar o ambiente local e realizar os testes (se houverem);
 
 Em caso de dúvidas sobre o desafio, entre em contato.
 
