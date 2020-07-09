@@ -71,7 +71,7 @@ Requisitos:
 
 Serão avaliados os seguintes itens:
 * Clareza do código;
-* Escolha das tecnologias;
+* Utilizar Java + Spring;
 * Se os requisitos descritos acima foram atendidos;
 * Se possui descrição clara de como montar o ambiente local e realizar os testes (se houverem);
 
