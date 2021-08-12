@@ -1,86 +1,162 @@
 # Desafio Técnico backend Conexa
 
-Descrição:
+Construir uma API REST para que nossos médicos de plantão consigam se logar na plataforma, consigam manter pacientes e agendar atendimentos com os pacientes cadastrados.
 
-Precisamos construir uma API REST onde nossos médicos de plantão consigam agendar atendimentos com pacientes.
+## Autenticação
 
+### Signup
+Precisamos de uma rota para que os médicos consigam realizar cadastro na plataforma:
+```
+POST /api/v1/signup
+{
+  "login": "medico@email.com",
+  "senha": "",
+  "confirmacaoSenha": "",
+  "specialidade": "Cardiologista",
+  "cpf": "101.202.303-11",
+  "idade": "33",
+  "telefone": "(21) 3232-6565"
+}
+```
+
+### Login
 Precisamos de uma rota para que médicos da clínica Conexa Saúde consigam realizar login na aplicação:
 ```
+POST /api/v1/login
 {
   "usuario": "medico@email.com",
   "senha": "senhamedico"
 }
 ```
 
-Onde o response vai ser um token JWT com algumas informações adicionais do médico e seus agendamentos do dia:
-```
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-  "medico": "Dr. Daniel Santos",
-  "especialidade": "Cardiologia"
-  "agendamentos_hoje": [
-    {
-      "id_paciente": "3u84904",
-      "data_hora_atendimento": "2020-08-03 09:00:00",
-    },
-    {
-      "id_paciente": "4903ud3",
-      "data_hora_atendimento": "2020-08-03 10:00:00",
-    },
-  ]
-}
-```
-OBS: A base precisa ter alguns médicos previamente cadastrados;
-
-
+### Logoff
 Também precisamos de uma rota para o médico conseguir realizar logoff:
 ```
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-}
+POST /api/v1/logoff
+Authentication: token_jwt
 ```
-Obs: Após realizado o logoff, token precisa ser invalidado na aplicação para que não seja possível reutilizá-lo novamente. 
+
+### Requisitos para autenticação:
+- Utilização de JWT;
+- Após logoff, o token precisa ser invalidado, não podendo mais ser permitida a sua utilização;
+- Validações de tipos de campo como E-mail, CPF válido, idade apenas números, telefone válido;
+- As senhas precisam ser armazenadas de forma criptografada;
 
 
-Na API também precisamos de um CRUD de pacientes com as seguintes informações:
+## Pacientes
+
+Na API também precisamos de rotas para que o médico logado consiga manter pacientes:
+### Criação:
 ```
+POST /api/v1/patients
+Authentication: token_jwt
 {
   "nome": "Rafael Braga",
   "cpf": "101.202.303-11",
   "idade": "33",
+  "email": "rafael.braga@gmail.com",
   "telefone": "(21) 3232-6565"
 }
 ```
-Obs: A rota de cadastro de pacientes não precisa ser verificada com o token JWT, pois o próprio paciente vai realizar o cadastro através de uma landing page pública na web.
 
-E por fim precisamos de uma rota onde o médico logado realiza agendamento de consulta para um paciente:
+### Alteração:
 ```
+PUT /api/v1/patients/{id}
+Authentication: token_jwt
 {
-  "data_hora_atendimento": "2020-08-03 09:00:00",
-  "id_paciente": "3u84904",
+  "nome": "Rafael Braga",
+  "cpf": "101.202.303-11",
+  "idade": "33",
+  "email": "rafael.braga@gmail.com",
+  "telefone": "(21) 3232-6565"
 }
 ```
-Após agendamento da consulta, o médico vai ter as informações dos agendamentos dele naquele dia após efetuar o login. 
+
+### Deleção:
+```
+DELETE /api/v1/patients/{id}
+Authentication: token_jwt
+```
+
+### Busca por ID do paciente:
+```
+GET /api/v1/patients/{id}
+Authentication: token_jwt
+```
+
+### Listagem de todos os pacientes:
+```
+GET /api/v1/patients/
+Authentication: token_jwt
+```
+
+### Requisitos para pacientes:
+- Todas as rotas de paciente precisam passar pela autenticação;
+- Validações de tipos de campo como E-mail, CPF válido, idade apenas números, telefone válido;
+
+## Agendamento
+
+### Criação de atendimento
+Precisamos de uma rota onde o médico logado realiza agendamento de consulta para um paciente:
+```
+POST /api/v1/attendance
+Authentication: token_jwt
+{
+  "dataHora": "2020-08-03 09:00:00",
+  "idPaciente": "3u84904",
+  "sintomas": [
+    {
+      "descricao": "Dor de cabeça",
+      "detalhes": "Dor na parte de trás da cabeça"
+    },
+    {
+      "descricao": "Febre"
+      "detalhes": "40 graus de febre"
+    }
+  ]
+}
+```
+
+### Consulta de atendimentos agendados
+Precisamos de uma rota onde o médico logado consulte os atendimentos agendados que ainda não aconteceram
+```
+GET /api/v1/attendance
+Authentication: token_jwt
+```
+
+### Cancelamento de atendimentos agendados
+Precisamos de uma rota onde o médico logado cancele o atendimentos agendado
+```
+DELETE /api/v1/attendance/{id}
+Authentication: token_jwt
+```
+
+### Requisitos para atendimentos:
+- Todas as rotas de atendimento precisam passar pela autenticação;
+- Só pode ser possível criar agendamentos no futuro;
+- Só pode ser possível criar agendamentos para pacientes existentes;
+- Só pode ser possível cancelar atendimentos criados pelo própio médico;
+- Somente o médico que criou o atendimento pode visualizá-lo;
 
 
-Requisitos:
-* Desenvolva uma aplicação REST utilizando Java 8 e Spring;
-* Banco de dados MySQL;
-* Clonar este repositório, criar uma nova branch e abrir um merge request para master;
+# Requisitos Obrigatórios:
+- Utilização de Java com Spring;
+- Banco de dados MySQL;
+- Realizar fork deste repositório, e após o desenvolvimento, abrir um merge request apontando para repositório original;
 
 
-Serão avaliados os seguintes itens:
+# Serão avaliados os seguintes itens:
+* Se todos os requisitos descritos acima foram atendidos;
 * Clareza do código;
-* Utilizar Java + Spring;
-* Se os requisitos descritos acima foram atendidos;
-* Se possui descrição clara de como montar o ambiente local e realizar os testes (se houverem);
+* Estrutura de código organizada;
+* Se utilizou corretamente os conceitos do REST;
+* Se utilizou o Spring de forma correta;
+* Se possui tratamento de erros;
+* Se os testes rodam;
+
+**Obs:**
+Necessário descrever, ou prover, todas as dependências e ações necessárias (banco, tabelas, versões, etc) para que o avaliador consiga rodar a aplicação na sua máquina local;
+
+**Lembre-se que uma aplicação boa é uma aplicação bem testada;**
 
 Em caso de dúvidas sobre o desafio, entre em contato.
-
-Lembre-se que uma boa aplicação é bem testada
-
-
-
-
-
-
