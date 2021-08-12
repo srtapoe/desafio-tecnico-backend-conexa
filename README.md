@@ -9,7 +9,7 @@ Precisamos de uma rota para que os médicos consigam realizar cadastro na plataf
 ```
 POST /api/v1/signup
 {
-  "login": "medico@email.com",
+  "email": "medico@email.com",
   "senha": "",
   "confirmacaoSenha": "",
   "specialidade": "Cardiologista",
@@ -24,7 +24,7 @@ Precisamos de uma rota para que médicos da clínica Conexa Saúde consigam real
 ```
 POST /api/v1/login
 {
-  "login": "medico@email.com",
+  "email": "medico@email.com",
   "senha": "senhamedico"
 }
 ```
