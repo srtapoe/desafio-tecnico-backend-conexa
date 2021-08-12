@@ -39,7 +39,7 @@ Authentication: token_jwt
 ### Requisitos para autenticação:
 - Utilização de JWT;
 - Após logoff, o token precisa ser invalidado, não podendo mais ser permitida a sua utilização;
-- Validações de tipos de campo como E-mail, CPF válido, idade apenas números, telefone válido;
+- Validações de tipos de campo como E-mail, CPF válido, idade apenas números, telefone válido, etc;
 - As senhas precisam ser armazenadas de forma criptografada;
 
 
@@ -92,7 +92,7 @@ Authentication: token_jwt
 
 ### Requisitos para pacientes:
 - Todas as rotas de paciente precisam passar pela autenticação;
-- Validações de tipos de campo como E-mail, CPF válido, idade apenas números, telefone válido;
+- Validações de tipos de campo como E-mail, CPF válido, idade apenas números, telefone válido, etc;
 
 ## Agendamento
 
