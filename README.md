@@ -24,7 +24,7 @@ Precisamos de uma rota para que médicos da clínica Conexa Saúde consigam real
 ```
 POST /api/v1/login
 {
-  "usuario": "medico@email.com",
+  "login": "medico@email.com",
   "senha": "senhamedico"
 }
 ```
