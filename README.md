@@ -58,17 +58,9 @@ Authentication: token_jwt
 }
 ```
 
-### Consulta de atendimentos agendados
-Precisamos de uma rota onde o médico logado consulte os atendimentos agendados que ainda não aconteceram
-```
-endpoint: /api/v1/attendance
-Authentication: token_jwt
-```
-
 ### Requisitos para atendimentos:
 - Todas as rotas de atendimento precisam passar pela autenticação;
 - Só pode ser possível criar agendamentos no futuro;
-- Somente o médico que criou o atendimento pode visualizá-lo;
 
 
 # Requisitos Obrigatórios:
