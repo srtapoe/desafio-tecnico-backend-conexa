@@ -33,7 +33,7 @@ endpoint: /api/v1/login
 Também precisamos de uma rota para o médico conseguir realizar logoff:
 ```
 endpoint: /api/v1/logoff
-Authentication: token_jwt
+Authorization: token_jwt
 ```
 
 ### Requisitos para autenticação:
@@ -48,7 +48,7 @@ Authentication: token_jwt
 Precisamos de uma rota onde o médico logado realiza agendamento de consulta para um paciente:
 ```
 endpoint: /api/v1/attendance
-Authentication: token_jwt
+Authorization: token_jwt
 {
   "dataHora": "2020-08-03 09:00:00",
   "paciente": {
