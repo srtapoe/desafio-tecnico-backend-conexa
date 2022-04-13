@@ -1,20 +1,20 @@
 # Desafio Técnico backend Conexa
 
-Construir uma API REST para que nossos médicos de plantão consigam se logar na plataforma, consigam manter pacientes e agendar atendimentos com os pacientes cadastrados.
+Construir uma API REST para que nossos médicos de plantão consigam se logar na plataforma e agendar atendimentos para pacientes.
 
 ## Autenticação
 
 ### Signup
 Precisamos de uma rota para que os médicos consigam realizar cadastro na plataforma:
 ```
-POST /api/v1/signup
+endpoint:  /api/v1/signup
 {
   "email": "medico@email.com",
   "senha": "",
   "confirmacaoSenha": "",
-  "specialidade": "Cardiologista",
+  "especialidade": "Cardiologista",
   "cpf": "101.202.303-11",
-  "idade": "33",
+  "dataNascimento": "10/03/1980",
   "telefone": "(21) 3232-6565"
 }
 ```
@@ -39,8 +39,8 @@ Response:
 ### Logoff
 Também precisamos de uma rota para o médico conseguir realizar logoff:
 ```
-POST /api/v1/logoff
-Authentication: token_jwt
+endpoint: /api/v1/logoff
+Authorization: token_jwt
 ```
 
 ### Requisitos para autenticação:
@@ -49,101 +49,25 @@ Authentication: token_jwt
 - Validações de tipos de campo como E-mail, CPF válido, idade apenas números, telefone válido, etc;
 - As senhas precisam ser armazenadas de forma criptografada;
 
-
-## Pacientes
-
-Na API também precisamos de rotas para que o médico logado consiga manter pacientes:
-### Criação:
-```
-POST /api/v1/patients
-Authentication: token_jwt
-{
-  "nome": "Rafael Braga",
-  "cpf": "101.202.303-11",
-  "idade": "33",
-  "email": "rafael.braga@gmail.com",
-  "telefone": "(21) 3232-6565"
-}
-```
-
-### Alteração:
-```
-PUT /api/v1/patients/{id}
-Authentication: token_jwt
-{
-  "nome": "Rafael Braga",
-  "cpf": "101.202.303-11",
-  "idade": "33",
-  "email": "rafael.braga@gmail.com",
-  "telefone": "(21) 3232-6565"
-}
-```
-
-### Deleção:
-```
-DELETE /api/v1/patients/{id}
-Authentication: token_jwt
-```
-
-### Busca por ID do paciente:
-```
-GET /api/v1/patients/{id}
-Authentication: token_jwt
-```
-
-### Listagem de todos os pacientes:
-```
-GET /api/v1/patients/
-Authentication: token_jwt
-```
-
-### Requisitos para pacientes:
-- Todas as rotas de paciente precisam passar pela autenticação;
-- Validações de tipos de campo como E-mail, CPF válido, idade apenas números, telefone válido, etc;
-
 ## Agendamento
 
 ### Criação de atendimento
 Precisamos de uma rota onde o médico logado realiza agendamento de consulta para um paciente:
 ```
-POST /api/v1/attendance
-Authentication: token_jwt
+endpoint: /api/v1/attendance
+Authorization: token_jwt
 {
   "dataHora": "2020-08-03 09:00:00",
-  "idPaciente": "3u84904",
-  "sintomas": [
-    {
-      "descricao": "Dor de cabeça",
-      "detalhes": "Dor na parte de trás da cabeça"
-    },
-    {
-      "descricao": "Febre"
-      "detalhes": "40 graus de febre"
-    }
-  ]
+  "paciente": {
+    "nome": "João Castro",
+    "cpf": "101.202.303"
+  }
 }
-```
-
-### Consulta de atendimentos agendados
-Precisamos de uma rota onde o médico logado consulte os atendimentos agendados que ainda não aconteceram
-```
-GET /api/v1/attendance
-Authentication: token_jwt
-```
-
-### Cancelamento de atendimentos agendados
-Precisamos de uma rota onde o médico logado cancele o atendimentos agendado
-```
-DELETE /api/v1/attendance/{id}
-Authentication: token_jwt
 ```
 
 ### Requisitos para atendimentos:
 - Todas as rotas de atendimento precisam passar pela autenticação;
 - Só pode ser possível criar agendamentos no futuro;
-- Só pode ser possível criar agendamentos para pacientes existentes;
-- Só pode ser possível cancelar atendimentos criados pelo própio médico;
-- Somente o médico que criou o atendimento pode visualizá-lo;
 
 
 # Requisitos Obrigatórios:
