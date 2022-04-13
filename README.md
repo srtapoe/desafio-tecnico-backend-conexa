@@ -22,11 +22,18 @@ endpoint:  /api/v1/signup
 ### Login
 Precisamos de uma rota para que médicos da clínica Conexa Saúde consigam realizar login na aplicação:
 ```
-endpoint: /api/v1/login
-{
-  "email": "medico@email.com",
-  "senha": "senhamedico"
-}
+Request:
+  POST /api/v1/login
+  {
+    "email": "medico@email.com",
+    "senha": "senhamedico"
+  }
+
+Response:
+  Status-Code: 200
+  {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+  }
 ```
 
 ### Logoff
