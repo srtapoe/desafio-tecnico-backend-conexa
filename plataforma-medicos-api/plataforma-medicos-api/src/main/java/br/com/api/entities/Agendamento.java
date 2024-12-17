@@ -1,0 +1,28 @@
+package br.com.api.entities;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "atendimento")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Agendamento {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
+    private Long id;
+    private LocalDateTime dataHora;
+    @OneToOne
+    private Paciente paciente;
+
+    public Agendamento(Paciente paciente, LocalDateTime dataHora) {
+        this.paciente = paciente;
+        this.dataHora = dataHora;
+    }
+}
