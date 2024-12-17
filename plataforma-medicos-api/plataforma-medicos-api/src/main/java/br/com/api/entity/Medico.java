@@ -1,4 +1,4 @@
-package br.com.api.entities;
+package br.com.api.entity;
 
 
 import br.com.api.enums.Especialidade;

@@ -1,4 +1,4 @@
-package br.com.api.entities;
+package br.com.api.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
