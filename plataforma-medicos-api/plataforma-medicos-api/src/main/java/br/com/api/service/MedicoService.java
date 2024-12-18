@@ -20,7 +20,13 @@ public class MedicoService {
     }
 
     public void salvar(MedicoDTO medicoDTO) throws SenhasNaoConferemException {
-       if(!medicoDTO.getPassword().equals(medicoDTO.getConfirmacaoPassword())){
+        if (medicoRepository.existsByEmail(medicoDTO.getEmail())) {
+            throw new IllegalArgumentException("E-mail já cadastrado!");
+        }
+        if (medicoRepository.existsByCpf(medicoDTO.getCpf())) {
+            throw new IllegalArgumentException("CPF já cadastrado!");
+        }
+        if(!medicoDTO.getPassword().equals(medicoDTO.getConfirmacaoPassword())){
            throw new SenhasNaoConferemException("As senhas não são iguais!");
        }
 
