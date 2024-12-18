@@ -2,15 +2,7 @@ package br.com.api.dto;
 
 import br.com.api.enums.Especialidade;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class MedicoDTO {
 
     @Email(message = "O email é obrigatório")
@@ -30,4 +22,73 @@ public class MedicoDTO {
     @NotBlank(message = "O telefone é obrigatório")
     @Pattern(regexp = "\\(\\d{2}\\) \\d{4,5}-\\d{4}", message = "Telefone inválido")
     private String telefone;
+
+    public MedicoDTO(String email, String password, String confirmacaoPassword, Especialidade especialidade, String cpf, String dataNascimento, String telefone) {
+        this.email = email;
+        this.password = password;
+        this.confirmacaoPassword = confirmacaoPassword;
+        this.especialidade = especialidade;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+    }
+
+    public MedicoDTO() {
+    }
+
+    public @Email(message = "O email é obrigatório") String getEmail() {
+        return email;
+    }
+
+    public void setEmail(@Email(message = "O email é obrigatório") String email) {
+        this.email = email;
+    }
+
+    public @NotBlank(message = "Campo senha é obrigatório") @Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres") String getPassword() {
+        return password;
+    }
+
+    public void setPassword(@NotBlank(message = "Campo senha é obrigatório") @Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres") String password) {
+        this.password = password;
+    }
+
+    public @NotBlank(message = "A confirmação da senha é obrigatório") String getConfirmacaoPassword() {
+        return confirmacaoPassword;
+    }
+
+    public void setConfirmacaoPassword(@NotBlank(message = "A confirmação da senha é obrigatório") String confirmacaoPassword) {
+        this.confirmacaoPassword = confirmacaoPassword;
+    }
+
+    public @NotNull(message = "A especialidade é obrigatória") Especialidade getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(@NotNull(message = "A especialidade é obrigatória") Especialidade especialidade) {
+        this.especialidade = especialidade;
+    }
+
+    public @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "CPF inválido") @NotBlank(message = "O CPF é obrigatório") String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(@Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "CPF inválido") @NotBlank(message = "O CPF é obrigatório") String cpf) {
+        this.cpf = cpf;
+    }
+
+    public @NotNull(message = "A data de nascimento é obrigatória") String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(@NotNull(message = "A data de nascimento é obrigatória") String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public @NotBlank(message = "O telefone é obrigatório") @Pattern(regexp = "\\(\\d{2}\\) \\d{4,5}-\\d{4}", message = "Telefone inválido") String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(@NotBlank(message = "O telefone é obrigatório") @Pattern(regexp = "\\(\\d{2}\\) \\d{4,5}-\\d{4}", message = "Telefone inválido") String telefone) {
+        this.telefone = telefone;
+    }
 }

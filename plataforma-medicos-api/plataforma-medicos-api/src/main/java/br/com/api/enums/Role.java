@@ -1,11 +1,7 @@
 package br.com.api.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 
-@Getter
-@AllArgsConstructor
 public enum Role implements GrantedAuthority {
 
     ADMIN("Admin"), USER("User");
@@ -15,5 +11,13 @@ public enum Role implements GrantedAuthority {
     @Override
     public String getAuthority() {
         return this.name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    Role(String name) {
+        this.name = name;
     }
 }

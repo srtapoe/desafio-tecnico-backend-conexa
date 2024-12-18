@@ -1,10 +1,6 @@
 package br.com.api.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 
-@AllArgsConstructor
-@Getter
 public enum Especialidade {
 
     CARDIOLOGISTA("Cardiologista"),
@@ -19,4 +15,12 @@ public enum Especialidade {
     UROLOGISTA("Urologista");
 
     private final String description;
+
+    Especialidade(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

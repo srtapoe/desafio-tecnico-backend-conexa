@@ -4,7 +4,6 @@ package br.com.api.entity;
 import br.com.api.enums.Especialidade;
 import br.com.api.enums.Role;
 import jakarta.persistence.*;
-import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,17 +12,12 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "medicos")
 public class Medico implements Serializable , UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
     private Long id;
     @Column(unique = true, nullable = false)
     private String email;
@@ -44,5 +38,80 @@ public class Medico implements Serializable , UserDetails {
     @Override
     public String getUsername() {
         return this.email;
+    }
+
+    public Medico(Long id, String email, String password, Especialidade especialidade, String cpf, String telefone, LocalDateTime dataNascimento, Role role) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.especialidade = especialidade;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.dataNascimento = dataNascimento;
+        this.role = role;
+    }
+
+    public Medico() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Especialidade getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(Especialidade especialidade) {
+        this.especialidade = especialidade;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public LocalDateTime getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDateTime dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

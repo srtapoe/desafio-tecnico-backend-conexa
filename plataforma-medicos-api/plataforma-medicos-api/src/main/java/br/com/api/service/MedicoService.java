@@ -1,5 +1,6 @@
 package br.com.api.service;
 
+
 import br.com.api.dto.MedicoDTO;
 import br.com.api.entity.Medico;
 import br.com.api.enums.Role;
