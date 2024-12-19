@@ -2,6 +2,8 @@
 
 - [x] Criar entidades
 - [x] Criar enums necessários
+- [x] Endpoint para cadastro de médicos na plataforma
+- [x] Endpoint para médicos da clínica Conexa Saúde consigam realizar login na aplicação
 
 
 ## Configuração do Ambiente
