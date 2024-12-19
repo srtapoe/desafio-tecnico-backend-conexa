@@ -1,0 +1,66 @@
+[
+  {
+    "email": "dr.house@hospital.com",
+    "senha": "house123",
+    "confirmacaoSenha": "house123",
+    "especialidade": "NEUROLOGISTA",
+    "cpf": "123.456.789-00",
+    "dataNascimento": "11/06/1959",
+    "telefone": "(21) 1234-5678"
+  },
+  {
+    "email": "dr.mccoy@enterprise.com",
+    "senha": "mccoy123",
+    "confirmacaoSenha": "mccoy123",
+    "especialidade": "CARDIOLOGISTA",
+    "cpf": "987.654.321-00",
+    "dataNascimento": "12/03/2222",
+    "telefone": "(21) 8765-4321"
+  },
+  {
+    "email": "dr.watson@bakerstreet.com",
+    "senha": "watson123",
+    "confirmacaoSenha": "watson123",
+    "especialidade": "PEDIATRA",
+    "cpf": "111.222.333-44",
+    "dataNascimento": "12/09/1852",
+    "telefone": "(21) 2345-6789"
+  },
+  {
+    "email": "medico@email.com",
+    "senha": "",
+    "confirmacaoSenha": "",
+    "especialidade": "Cardiologista",
+    "cpf": "101.202.303-11",
+    "dataNascimento": "10/03/1980",
+    "telefone": "(21) 3232-6565"
+  },
+  {
+    "email": "sherlock@email.com",
+    "senha": "admin123",
+    "confirmacaoSenha": "admin123",
+    "especialidade": "CARDIOLOGISTA",
+    "cpf": "202.303.404-55",
+    "dataNascimento": "15/07/1975",
+    "telefone": "(11) 98765-4321",
+    "role": "ADMIN"
+  },
+  {
+    "email": "admin1@email.com",
+    "senha": "admin12345",
+    "confirmacaoSenha": "admin12345",
+    "especialidade": "ADMIN",
+    "cpf": "101.202.303-12",
+    "dataNascimento": "01/01/1980",
+    "telefone": "(11) 98765-4321"
+  },
+  {
+    "email": "admin2@email.com",
+    "senha": "admin54321",
+    "confirmacaoSenha": "admin54321",
+    "especialidade": "ADMIN",
+    "cpf": "202.303.404-13",
+    "dataNascimento": "02/02/1985",
+    "telefone": "(21) 99876-5432"
+  }
+]
