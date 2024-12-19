@@ -21,7 +21,7 @@ public class Medico implements Serializable , UserDetails {
     private Long id;
     @Column(unique = true, nullable = false)
     private String email;
-    private String password;
+    private String senha;
     @Enumerated(value = EnumType.STRING)
     private Especialidade especialidade;
     private String cpf;
@@ -40,10 +40,10 @@ public class Medico implements Serializable , UserDetails {
         return this.email;
     }
 
-    public Medico(Long id, String email, String password, Especialidade especialidade, String cpf, String telefone, LocalDateTime dataNascimento, Role role) {
+    public Medico(Long id, String email, String senha, Especialidade especialidade, String cpf, String telefone, LocalDateTime dataNascimento, Role role) {
         this.id = id;
         this.email = email;
-        this.password = password;
+        this.senha = senha;
         this.especialidade = especialidade;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -68,11 +68,11 @@ public class Medico implements Serializable , UserDetails {
 
     @Override
     public String getPassword() {
-        return password;
+        return senha;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public Especialidade getEspecialidade() {

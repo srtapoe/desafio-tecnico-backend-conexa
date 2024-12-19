@@ -1,6 +1,7 @@
 package br.com.api.dto;
 
 import br.com.api.enums.Especialidade;
+import br.com.api.enums.Role;
 import jakarta.validation.constraints.*;
 
 public class MedicoDTO {
@@ -9,9 +10,9 @@ public class MedicoDTO {
     private String email;
     @NotBlank(message = "Campo senha é obrigatório")
     @Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres")
-    private String password;
+    private String senha;
     @NotBlank(message = "A confirmação da senha é obrigatório")
-    private String confirmacaoPassword;
+    private String confirmacaoSenha;
     @NotNull(message = "A especialidade é obrigatória")
     private Especialidade especialidade;
     @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "CPF inválido")
@@ -22,11 +23,13 @@ public class MedicoDTO {
     @NotBlank(message = "O telefone é obrigatório")
     @Pattern(regexp = "\\(\\d{2}\\) \\d{4,5}-\\d{4}", message = "Telefone inválido")
     private String telefone;
+    @NotNull(message = "O papel (role) é obrigatório")
+    private Role role;
 
-    public MedicoDTO(String email, String password, String confirmacaoPassword, Especialidade especialidade, String cpf, String dataNascimento, String telefone) {
+    public MedicoDTO(String email, String senha, String confirmacaoSenha, Especialidade especialidade, String cpf, String dataNascimento, String telefone) {
         this.email = email;
-        this.password = password;
-        this.confirmacaoPassword = confirmacaoPassword;
+        this.senha = senha;
+        this.confirmacaoSenha = confirmacaoSenha;
         this.especialidade = especialidade;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
@@ -44,20 +47,20 @@ public class MedicoDTO {
         this.email = email;
     }
 
-    public @NotBlank(message = "Campo senha é obrigatório") @Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres") String getPassword() {
-        return password;
+    public @NotBlank(message = "Campo senha é obrigatório") @Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres") String getSenha() {
+        return senha;
     }
 
-    public void setPassword(@NotBlank(message = "Campo senha é obrigatório") @Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres") String password) {
-        this.password = password;
+    public void setSenha(@NotBlank(message = "Campo senha é obrigatório") @Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres") String password) {
+        this.senha = password;
     }
 
-    public @NotBlank(message = "A confirmação da senha é obrigatório") String getConfirmacaoPassword() {
-        return confirmacaoPassword;
+    public @NotBlank(message = "A confirmação da senha é obrigatório") String getConfirmacaoSenha() {
+        return confirmacaoSenha;
     }
 
-    public void setConfirmacaoPassword(@NotBlank(message = "A confirmação da senha é obrigatório") String confirmacaoPassword) {
-        this.confirmacaoPassword = confirmacaoPassword;
+    public void setConfirmacaoSenha(@NotBlank(message = "A confirmação da senha é obrigatório") String confirmacaoSenha) {
+        this.confirmacaoSenha = confirmacaoSenha;
     }
 
     public @NotNull(message = "A especialidade é obrigatória") Especialidade getEspecialidade() {
@@ -90,5 +93,13 @@ public class MedicoDTO {
 
     public void setTelefone(@NotBlank(message = "O telefone é obrigatório") @Pattern(regexp = "\\(\\d{2}\\) \\d{4,5}-\\d{4}", message = "Telefone inválido") String telefone) {
         this.telefone = telefone;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
