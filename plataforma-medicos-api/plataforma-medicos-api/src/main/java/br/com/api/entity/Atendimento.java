@@ -5,28 +5,32 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "agendamentos")
-public class Agendamento {
+@Table(name = "atendimentos")
+public class Atendimento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime dataHora;
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "paciente_id")
     private Paciente paciente;
+    @ManyToOne
+    Medico medico;
 
-    public Agendamento(Paciente paciente, LocalDateTime dataHora) {
+    public Atendimento(Paciente paciente, LocalDateTime dataHora, Medico medico) {
         this.paciente = paciente;
         this.dataHora = dataHora;
+        this.medico = medico;
     }
 
-    public Agendamento(Long id, LocalDateTime dataHora, Paciente paciente) {
+    public Atendimento(Long id, LocalDateTime dataHora, Paciente paciente) {
         this.id = id;
         this.dataHora = dataHora;
         this.paciente = paciente;
     }
 
-    public Agendamento() {
+    public Atendimento() {
     }
 
     public Long getId() {
@@ -47,5 +51,13 @@ public class Agendamento {
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
     }
 }
