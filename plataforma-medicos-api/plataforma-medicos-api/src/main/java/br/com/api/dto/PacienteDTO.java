@@ -7,11 +7,8 @@ public class PacienteDTO {
     String cpf;
 
     public PacienteDTO(Paciente paciente) {
-        this.nome = paciente.getNome();
         this.cpf = paciente.getCpf();
-    }
-
-    public PacienteDTO() {
+        this.nome = paciente.getNome();
     }
 
     public String getNome() {
@@ -30,8 +27,8 @@ public class PacienteDTO {
         this.cpf = cpf;
     }
 
-    public PacienteDTO(String mensagemErro) {
-        this.cpf = mensagemErro;
+    public PacienteDTO(String mensagem) {
+        this.nome = mensagem;
     }
 }
 
